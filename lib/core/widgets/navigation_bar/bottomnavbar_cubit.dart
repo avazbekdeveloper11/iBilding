@@ -3,16 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:i_bilding/core/constants/constant.dart';
 import 'package:i_bilding/screens/contact_page/contact_view.dart';
+import 'package:i_bilding/screens/history_page/history_page.dart';
+import 'package:i_bilding/screens/profile_page/profile_view.dart';
+import 'package:i_bilding/screens/saved_page/saved_view.dart';
 part 'bottomnavbar_state.dart';
 
 class BottomnavbarCubit extends Cubit<BottomnavbarState> {
+  int currentIndex = 0;
+  // PAGES...
+  List pages = [];
+  BottomnavbarCubit() : super(const BottomnavbarInitial()) {
+    pages.addAll(
+      const [
+        ContractstView(),
+        HistoryPage(),
+        ContractstView(),
+        SavedView(),
+        ProfileView()
+      ],
+    );
+  }
   // BottomNavigationBarItem...
   List<BottomNavigationBarItem> items = [
     BottomNavigationBarItem(
       label: '',
-      icon: SvgPicture.asset(Constant.contact),
+      icon: SvgPicture.asset(Constant.contracts),
       activeIcon: SvgPicture.asset(
-        Constant.contact,
+        Constant.contracts,
         color: Colors.white,
       ),
     ),
@@ -49,20 +66,6 @@ class BottomnavbarCubit extends Cubit<BottomnavbarState> {
       ),
     ),
   ];
-  // PAGES...
-  List pages = [];
-  int currentIndex = 0;
-  BottomnavbarCubit() : super(const BottomnavbarInitial()) {
-    pages.addAll(
-      const [
-        ContractstView(),
-        ContractstView(),
-        ContractstView(),
-        ContractstView(),
-        ContractstView()
-      ],
-    );
-  }
 
   // CHANGE CURRENT INDEX BOTTOMNAVIGATIONVAR...
   void changeIndex(int index) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:i_bilding/core/widgets/navigation_bar/navigation_bar.dart';
+import 'package:i_bilding/core/widgets/navigation_bar/bottom_navigation_bar.dart';
 
 class RouteGenerator {
   Route? generateRoute(RouteSettings settings) {

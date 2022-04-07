@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:i_bilding/core/colors/colors.dart';
 import 'package:i_bilding/core/widgets/navigation_bar/bottomnavbar_cubit.dart';
 
 class BottomBarView extends StatelessWidget {
@@ -24,6 +25,7 @@ class BottomBarView extends StatelessWidget {
           .pages[context.watch<BottomnavbarCubit>().currentIndex],
       bottomNavigationBar: Theme(
         // THEME...
+
         data: Theme.of(context).copyWith(
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
@@ -31,6 +33,7 @@ class BottomBarView extends StatelessWidget {
         ),
         // BOTTOM NAVIGATION BAR...
         child: BottomNavigationBar(
+          backgroundColor: ConstColor.darkes,
           currentIndex: context.watch<BottomnavbarCubit>().currentIndex,
           showSelectedLabels: false,
           type: BottomNavigationBarType.fixed,
