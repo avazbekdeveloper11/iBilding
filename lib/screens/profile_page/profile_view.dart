@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:i_bilding/core/colors/colors.dart';
-import 'package:i_bilding/core/widgets/app_bar_widget/app_bar_widget.dart';
+import 'package:i_bilding/core/components/my_deco.dart';
+import 'package:i_bilding/core/constants/constant.dart';
+import 'package:i_bilding/core/constants/size_config.dart';
+import 'package:i_bilding/core/extensions/padding_extension.dart';
+import 'package:i_bilding/screens/profile_page/components/app_bar_profile.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -8,26 +12,43 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ConstColor.darkes,
-        title: const Text("Profile"),
-        leading: Container(
-          margin: const EdgeInsets.all(12.0),
-          decoration: BoxDecoration(
-            color: ConstColor.grey,
-            borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-            image: const DecorationImage(
-              image: AssetImage('assets/png/elipse.png'),
-            ),
-          ),
-        ),
-      ),
+      appBar: const ProfileAppBar().build(context),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text("data"),
+        children: [
+          Container(
+            height: getHeight(188),
+            width: double.infinity,
+            decoration: MyDeco.radiusAndColor(
+              color: ConstColor.dark,
+              r: 6,
+            ),
+          ).op(top: 20, bottom: 11),
+          Container(
+            height: getHeight(44),
+            width: double.infinity,
+            decoration: MyDeco.radiusAndColor(
+              color: ConstColor.dark,
+              r: 6,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "English (USA)",
+                  style: TextStyle(
+                    color: ConstColor.whiteBold,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                CircleAvatar(
+                  radius: 15,
+                  backgroundImage: AssetImage(Constant.usa),
+                ),
+              ],
+            ).sp(h: 20),
+          ).op(bottom: 4),
         ],
-      ),
+      ).sp(h: 16),
     );
   }
 }

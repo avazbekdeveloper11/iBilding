@@ -20,4 +20,7 @@ class Constant {
   // PNG
   static String emptyList = "assets/svg/empty_list.png";
   static String emptySaved = "assets/svg/empty_saved.png";
-  }
+  static String usa = "assets/svg/usa.png";
+  static String uzb = "assets/svg/uzb.png";
+  static String russia = "assets/svg/russia.png";
+}
