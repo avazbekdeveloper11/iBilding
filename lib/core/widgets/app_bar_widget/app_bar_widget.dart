@@ -29,13 +29,17 @@ class AppBarWIdget extends StatelessWidget {
         IconButton(
           icon: SvgPicture.asset(Constant.filter),
           splashRadius: 20,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, "/filter");
+          },
         ),
         SvgPicture.asset(Constant.line).sp(h: 3),
         IconButton(
           icon: SvgPicture.asset(Constant.search),
           splashRadius: 20,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, "/search");
+          },
         ),
       ],
     );

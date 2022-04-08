@@ -14,6 +14,7 @@ class Constant {
   static String line = "assets/svg/line.svg";
   static String lineHorizontal = "assets/svg/lineHorizontal.svg";
   static String search = "assets/svg/search.svg";
+  static String close = "assets/svg/close.svg";
   static String paper = "assets/svg/Paper.svg";
   static String calendar = "assets/svg/Calendar.svg";
   static String activRadio = "assets/svg/activ_radio.svg";
@@ -25,4 +26,5 @@ class Constant {
   static String usa = "assets/png/usa.png";
   static String uzb = "assets/png/uzb.png";
   static String russia = "assets/png/russia.png";
+  static String avatar = "assets/svg/avatar.png";
 }

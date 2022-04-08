@@ -45,7 +45,7 @@ class ContractstView extends StatelessWidget {
 
   SizedBox cardBuilder(a) {
     return SizedBox(
-      height: getHeight(500),
+      height: getHeight(507),
       width: double.infinity,
       child: ListView.builder(
         itemBuilder: (_, __) {
