@@ -16,11 +16,13 @@ class Constant {
   static String search = "assets/svg/search.svg";
   static String paper = "assets/svg/Paper.svg";
   static String calendar = "assets/svg/Calendar.svg";
+  static String activRadio = "assets/svg/activ_radio.svg";
+  static String not_activ_radio = "assets/svg/not_activ_radio.svg";
 
   // PNG
   static String emptyList = "assets/svg/empty_list.png";
   static String emptySaved = "assets/svg/empty_saved.png";
-  static String usa = "assets/svg/usa.png";
-  static String uzb = "assets/svg/uzb.png";
-  static String russia = "assets/svg/russia.png";
+  static String usa = "assets/png/usa.png";
+  static String uzb = "assets/png/uzb.png";
+  static String russia = "assets/png/russia.png";
 }

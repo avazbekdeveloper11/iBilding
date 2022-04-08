@@ -25,7 +25,7 @@ class HistoryPage extends StatelessWidget {
 
   SizedBox cardBuilder() {
     return SizedBox(
-      height: getHeight(528),
+      height: getHeight(548.6),
       child: ListView.builder(
         itemBuilder: (_, __) {
           return const CardData().op(top: 12, left: 16, right: 16);
