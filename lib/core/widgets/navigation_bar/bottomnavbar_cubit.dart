@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:i_bilding/core/constants/constant.dart';
+import 'package:i_bilding/core/widgets/created_dialog/created_dialog.dart';
+import 'package:i_bilding/model/data.dart';
 import 'package:i_bilding/screens/contact_page/contact_view.dart';
 import 'package:i_bilding/screens/history_page/history_page.dart';
 import 'package:i_bilding/screens/profile_page/profile_view.dart';
@@ -12,14 +14,15 @@ class BottomnavbarCubit extends Cubit<BottomnavbarState> {
   int currentIndex = 0;
   // PAGES...
   List pages = [];
+  // List pagesRoute = ["/contract", "/history", "", "/saved", "/profile"];
   BottomnavbarCubit() : super(const BottomnavbarInitial()) {
     pages.addAll(
-      const [
-        ContractstView(),
-        HistoryPage(),
-        ContractstView(),
-        SavedView(),
-        ProfileView()
+      [
+        const ContractstView(),
+        const HistoryPage(),
+        MyData.page,
+        const SavedView(),
+        const ProfileView(),
       ],
     );
   }
@@ -68,7 +71,21 @@ class BottomnavbarCubit extends Cubit<BottomnavbarState> {
   ];
 
   // CHANGE CURRENT INDEX BOTTOMNAVIGATIONVAR...
-  void changeIndex(int index) {
+  void changeIndex(int index, BuildContext context) {
+    if (index == 2) {
+      MyDialog.dialog(context);
+    } else {
+      currentIndex = index;
+      emit(ChangeIndexState());
+    }
+  }
+
+  void twoTengla() {
+    currentIndex = 2;
+    emit(ChangePageState());
+  }
+
+  void backPage(int index) {
     currentIndex = index;
     emit(ChangeIndexState());
   }

@@ -12,3 +12,7 @@ class BottomnavbarInitial extends BottomnavbarState {
 class ChangeIndexState extends BottomnavbarState {
   const ChangeIndexState();
 }
+
+class ChangePageState extends BottomnavbarState {
+  const ChangePageState();
+}

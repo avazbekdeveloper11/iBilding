@@ -1,3 +1,7 @@
+import 'package:flutter/rendering.dart';
+import 'package:i_bilding/core/colors/colors.dart';
+import 'package:i_bilding/core/constants/size_config.dart';
+
 class Constant {
   // SVG
   static String contracts = "assets/svg/contracts.svg";
@@ -19,6 +23,9 @@ class Constant {
   static String calendar = "assets/svg/Calendar.svg";
   static String activRadio = "assets/svg/activ_radio.svg";
   static String not_activ_radio = "assets/svg/not_activ_radio.svg";
+  static String bigPaper = "assets/svg/bigPaper.svg";
+  static String inVoice = "assets/svg/inVoice.svg";
+  static String arrowDown = "assets/svg/arrow_down.svg";
 
   // PNG
   static String emptyList = "assets/svg/empty_list.png";
@@ -27,4 +34,11 @@ class Constant {
   static String uzb = "assets/png/uzb.png";
   static String russia = "assets/png/russia.png";
   static String avatar = "assets/svg/avatar.png";
+
+  //
+
+  static TextStyle forumTitleStyle = TextStyle(
+    color: ConstColor.greyText,
+    fontSize: getWidht(14),
+  );
 }

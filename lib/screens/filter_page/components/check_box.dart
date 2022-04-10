@@ -14,7 +14,7 @@ class chackboxTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: getWidht(163),
+      width: getWidht(180),
       child: Row(
         children: [
           Checkbox(
