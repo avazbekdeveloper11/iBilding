@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:i_bilding/core/colors/colors.dart';
 import 'package:i_bilding/core/components/my_deco.dart';
@@ -7,12 +8,25 @@ import 'package:i_bilding/core/constants/forum_decoration.dart';
 import 'package:i_bilding/core/constants/size_config.dart';
 import 'package:i_bilding/core/extensions/padding_extension.dart';
 import 'package:i_bilding/core/widgets/app_bar_widget/title_and_leading.dart';
+import 'package:i_bilding/model/data.dart';
+import 'package:i_bilding/screens/created_pages/create_contract.dart/create_constract_cubit.dart';
 
 class CreateContract extends StatelessWidget {
   const CreateContract({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider<CreateConstractCubit>(
+      create: (context) => CreateConstractCubit(),
+      child: BlocBuilder<CreateConstractCubit, CreateConstractState>(
+        builder: (context, state) {
+          return createContractScaffold(context);
+        },
+      ),
+    );
+  }
+
+  Scaffold createContractScaffold(BuildContext context) {
     return Scaffold(
       appBar: LeadingAndTitleAppBar(title: "Contracts").build(context),
       body: Column(
@@ -25,41 +39,59 @@ class CreateContract extends StatelessWidget {
           InkWell(
             child: Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset(Constant.arrowDown).op(right: 10),
+                  Text(context.watch<CreateConstractCubit>().faceVal.toString(),
+                      style: TextStyle(color: ConstColor.white)),
+                  SvgPicture.asset(Constant.arrowDown),
                 ],
-              ),
+              ).sp(h: 10),
               height: getHeight(44),
               decoration: MyDeco.radiusColor(),
             ),
-            onTap: () {},
+            onTap: () {
+              context.read<CreateConstractCubit>().turnFace();
+            },
           ),
           Visibility(
-            visible: false,
+            visible: context.watch<CreateConstractCubit>().visibilteFace,
             child: Container(
               decoration: MyDeco.radiusAndColor(color: ConstColor.dark, r: 6),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Physical",
-                        style: TextStyle(color: ConstColor.white),
-                      ),
-                      SvgPicture.asset(Constant.activRadio)
-                    ],
-                  ).op(bottom: 17),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Physical",
-                        style: TextStyle(color: ConstColor.white),
-                      ),
-                      SvgPicture.asset(Constant.activRadio)
-                    ],
+                  SizedBox(
+                    height: getHeight(80),
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (_, __) {
+                        return InkWell(
+                          onTap: () {
+                            BlocProvider.of<CreateConstractCubit>(context)
+                                .changeFace(__);
+                          },
+                          child: SizedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  MyData.itemsFace[__],
+                                  style: TextStyle(color: ConstColor.white),
+                                ),
+                                context
+                                        .watch<CreateConstractCubit>()
+                                        .faceValue[__]
+                                    ? SvgPicture.asset(Constant.activRadio)
+                                    : SvgPicture.asset(Constant.not_activ_radio)
+                              ],
+                            ).op(bottom: __ == 1 ? 0 : 20),
+                          ),
+                        );
+                      },
+                      itemCount: context
+                          .watch<CreateConstractCubit>()
+                          .faceValue
+                          .length,
+                    ),
                   ),
                 ],
               ).all(all: 20),
@@ -72,6 +104,7 @@ class CreateContract extends StatelessWidget {
           SizedBox(
             height: getHeight(44),
             child: TextFormField(
+              controller: context.watch<CreateConstractCubit>().fishController,
               decoration: FormDeco.deco(),
             ),
           ),
@@ -82,6 +115,8 @@ class CreateContract extends StatelessWidget {
           SizedBox(
             height: getHeight(44),
             child: TextFormField(
+              controller:
+                  context.watch<CreateConstractCubit>().adressController,
               decoration: FormDeco.deco(),
             ),
           ),
@@ -89,6 +124,7 @@ class CreateContract extends StatelessWidget {
           SizedBox(
             height: getHeight(44),
             child: TextFormField(
+              controller: context.watch<CreateConstractCubit>().innController,
               decoration: FormDeco.deco(),
             ),
           ),
@@ -97,61 +133,63 @@ class CreateContract extends StatelessWidget {
           InkWell(
             child: Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    context.watch<CreateConstractCubit>().statusVal.toString(),
+                    style: TextStyle(
+                      color: ConstColor.white,
+                    ),
+                  ),
                   SvgPicture.asset(Constant.arrowDown).op(right: 10),
                 ],
-              ),
+              ).sp(h: 10),
               height: getHeight(44),
               decoration: MyDeco.radiusColor(),
             ),
-            onTap: () {},
+            onTap: () {
+              context.read<CreateConstractCubit>().turnStatus();
+            },
           ),
           Visibility(
-            visible: false,
+            visible: context.watch<CreateConstractCubit>().visibilteStatus,
             child: Container(
               decoration: MyDeco.radiusAndColor(color: ConstColor.dark, r: 6),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Paid",
-                        style: TextStyle(color: ConstColor.white),
-                      ),
-                      SvgPicture.asset(Constant.activRadio)
-                    ],
-                  ).op(bottom: 17),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "In process",
-                        style: TextStyle(color: ConstColor.white),
-                      ),
-                      SvgPicture.asset(Constant.activRadio)
-                    ],
-                  ).op(bottom: 17),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Rejected by Payme",
-                        style: TextStyle(color: ConstColor.white),
-                      ),
-                      SvgPicture.asset(Constant.activRadio)
-                    ],
-                  ).op(bottom: 17),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Rejected by IQ",
-                        style: TextStyle(color: ConstColor.white),
-                      ),
-                      SvgPicture.asset(Constant.activRadio)
-                    ],
+                  SizedBox(
+                    height: getHeight(175),
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (_, __) {
+                        return InkWell(
+                          onTap: () {
+                            BlocProvider.of<CreateConstractCubit>(context)
+                                .changeStatus(__);
+                          },
+                          child: SizedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  MyData.itemsStatus[__],
+                                  style: TextStyle(color: ConstColor.white),
+                                ),
+                                context
+                                        .watch<CreateConstractCubit>()
+                                        .statusValue[__]
+                                    ? SvgPicture.asset(Constant.activRadio)
+                                    : SvgPicture.asset(Constant.not_activ_radio)
+                              ],
+                            ).op(bottom: __ == 3 ? 0 : 17),
+                          ),
+                        );
+                      },
+                      itemCount: context
+                          .watch<CreateConstractCubit>()
+                          .statusValue
+                          .length,
+                    ),
                   ),
                 ],
               ).all(all: 20),

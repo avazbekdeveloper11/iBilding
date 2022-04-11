@@ -22,6 +22,7 @@ class Constant {
   static String paper = "assets/svg/Paper.svg";
   static String calendar = "assets/svg/Calendar.svg";
   static String activRadio = "assets/svg/activ_radio.svg";
+  static String dislabedRadio = "assets/svg/dislabed.svg";
   static String not_activ_radio = "assets/svg/not_activ_radio.svg";
   static String bigPaper = "assets/svg/bigPaper.svg";
   static String inVoice = "assets/svg/inVoice.svg";

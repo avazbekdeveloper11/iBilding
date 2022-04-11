@@ -9,6 +9,7 @@ import 'package:i_bilding/screens/history_page/history_page.dart';
 import 'package:i_bilding/screens/profile_page/profile_view.dart';
 import 'package:i_bilding/screens/saved_page/saved_view.dart';
 import 'package:i_bilding/screens/search_page/search_view.dart';
+import 'package:i_bilding/screens/singel_page/singel_view.dart';
 
 class RouteGenerator {
   Route? generateRoute(RouteSettings settings) {
@@ -33,6 +34,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SavedView());
       case "/profile":
         return MaterialPageRoute(builder: (_) => const ProfileView());
+      case "/singel":
+        return MaterialPageRoute(builder: (_) => const SingelView());
     }
   }
 }

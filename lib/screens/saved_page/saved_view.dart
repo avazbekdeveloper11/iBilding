@@ -5,6 +5,7 @@ import 'package:i_bilding/core/constants/size_config.dart';
 import 'package:i_bilding/core/extensions/padding_extension.dart';
 import 'package:i_bilding/core/widgets/app_bar_widget/app_bar_widget.dart';
 import 'package:i_bilding/core/widgets/card/card.dart';
+import 'package:i_bilding/service/hive_service.dart';
 
 class SavedView extends StatelessWidget {
   const SavedView({Key? key}) : super(key: key);
@@ -34,9 +35,10 @@ class SavedView extends StatelessWidget {
   ListView savedBuilder(a) {
     return ListView.builder(
       itemBuilder: (_, __) {
-        return const CardData().op(top: 12, left: 16, right: 16);
+        return CardData(cardData: HiveService.box!.getAt(__))
+            .op(top: 12, left: 16, right: 16);
       },
-      itemCount: a,
+      itemCount: HiveService.box!.length,
     );
   }
 }

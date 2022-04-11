@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:i_bilding/core/constants/constant.dart';
 import 'package:i_bilding/core/widgets/created_dialog/created_dialog.dart';
-import 'package:i_bilding/model/data.dart';
 import 'package:i_bilding/screens/contact_page/contact_view.dart';
 import 'package:i_bilding/screens/history_page/history_page.dart';
 import 'package:i_bilding/screens/profile_page/profile_view.dart';
@@ -20,7 +19,7 @@ class BottomnavbarCubit extends Cubit<BottomnavbarState> {
       [
         const ContractstView(),
         const HistoryPage(),
-        MyData.page,
+        '',
         const SavedView(),
         const ProfileView(),
       ],
