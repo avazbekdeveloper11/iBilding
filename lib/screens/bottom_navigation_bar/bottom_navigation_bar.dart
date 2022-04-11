@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_bilding/core/colors/colors.dart';
-import 'package:i_bilding/core/widgets/navigation_bar/bottomnavbar_cubit.dart';
+import 'package:i_bilding/screens/bottom_navigation_bar/bottomnavbar_cubit.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView({Key? key}) : super(key: key);

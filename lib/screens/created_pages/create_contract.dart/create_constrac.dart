@@ -235,9 +235,7 @@ class CreateContract extends StatelessWidget {
                   decoration:
                       MyDeco.radiusAndColor(color: ConstColor.lightGren, r: 6),
                 ).op(top: 24),
-                onTap: () {
-                  
-                },
+                onTap: () {},
               ),
             ),
           ],
