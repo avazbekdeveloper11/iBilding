@@ -5,6 +5,7 @@ part 'create_constract_state.dart';
 
 class CreateConstractCubit extends Cubit<CreateConstractState> {
   CreateConstractCubit() : super(const CreateConstractInitial());
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController fishController = TextEditingController();
   TextEditingController adressController = TextEditingController();
   TextEditingController innController = TextEditingController();
@@ -15,6 +16,7 @@ class CreateConstractCubit extends Cubit<CreateConstractState> {
 
   bool visibilteStatus = false;
   bool visibilteFace = false;
+  bool isShow = false;
 
   turnFace() {
     visibilteFace = !visibilteFace;
@@ -43,5 +45,16 @@ class CreateConstractCubit extends Cubit<CreateConstractState> {
     faceValue = List.generate(2, (index) => v == index ? true : false);
     visibilteFace = false;
     emit(FaceValueState());
+  }
+
+  showButton() {
+    if (fishController.text.isNotEmpty &&
+        adressController.text.isNotEmpty &&
+        innController.text.isNotEmpty) {
+      isShow = true;
+    } else {
+      isShow = false;
+    }
+    emit(ShowButtonState());
   }
 }

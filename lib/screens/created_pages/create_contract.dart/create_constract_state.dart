@@ -28,3 +28,7 @@ class FaceValueStatus extends CreateConstractState {
 class StatusValueState extends CreateConstractState {
   const StatusValueState();
 }
+
+class ShowButtonState extends CreateConstractState {
+  const ShowButtonState();
+}
